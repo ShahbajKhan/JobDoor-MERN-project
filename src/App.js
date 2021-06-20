@@ -10,6 +10,7 @@ import Home from "./components/Home/Home/Home";
 import Employer from "./components/Employer/Employer";
 import Login from "./components/Shared/Login/Login";
 import NoRoute from "./components/NoRoute/NoRoute";
+import MakeAdmin from "./components/Admin/MakeAdmin/MakeAdmin";
 
 export const UserContext = createContext();
 function App() {
@@ -24,6 +25,9 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <PrivateRoute path="/admin/addAdmin">
+            <MakeAdmin />
+          </PrivateRoute>
           <PrivateRoute path="/postJob">
             <Employer />
           </PrivateRoute>

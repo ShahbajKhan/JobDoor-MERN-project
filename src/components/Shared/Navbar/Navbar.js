@@ -1,7 +1,53 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../../../App';
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const Navbar = () => {
+    const [loggedInUser, setLoggedInUser] = useContext(UserContext);
+    const [isAdmin, setIsAdmin] = useState(false);
+    const verifyEmail = loggedInUser.email;
+
+    // Check Admin
+    useEffect(() => {
+        fetch(`http://localhost:5000/adminCheck/${verifyEmail}`, {
+            method: 'GET'
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data) {
+                    setIsAdmin(true);
+                }
+                else {
+                    setIsAdmin(false)
+                }
+
+            })
+    },[verifyEmail]);
+    // Implement Logout
+    const signOut = () => {
+
+        firebase.auth().signOut().then(res => {
+            const signedOutUser = {
+                isSignedIn: false,
+                name: '',
+                photo: '',
+                email: '',
+                error: '',
+                success: false
+            }
+            setLoggedInUser(signedOutUser);
+            setIsAdmin(false);
+            sessionStorage.setItem('token', '');
+        }).catch(err => {
+            console.log(err);
+            console.log(err.message)
+        })
+    };
+
+    const name = loggedInUser.displayName;
     return (
         <nav className="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
             <div className="container">
@@ -13,11 +59,19 @@ const Navbar = () => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav ms-auto">
-                        <Link to="/home" className="nav-link" style={{cursor:'pointer'}} smooth={true} duration={1000}>Home</Link>
-                        <Link to="about" className="nav-link" style={{cursor:'pointer'}} smooth={true} duration={1000}>Jobs</Link>
-                        <Link to="/postJob" className="nav-link" style={{cursor:'pointer'}} >Post Job</Link>
-                        
-                        <Link to="contact" className="nav-link" style={{cursor:'pointer'}} smooth={true} duration={1000}>Contact</Link>
+                        <Link to="/home" className="nav-link" style={{ cursor: 'pointer' }} >Home</Link>
+                        {
+                            isAdmin && <Link to="/admin/addAdmin" className="nav-link" style={{ cursor: 'pointer' }} >Admin</Link>
+                        }
+
+                        <Link to="/postJob" className="nav-link" style={{ cursor: 'pointer' }} >Post Job</Link>
+
+                        {
+                            loggedInUser.email ? <button className="btn btn-warning me-2" onClick={signOut}>Log Out</button> : <Link to="/login" className="btn btn-success">Login</Link>
+                        }
+                        {
+                            name && <button className="btn btn-success">{name}</button>
+                        }
                     </div>
                 </div>
             </div>

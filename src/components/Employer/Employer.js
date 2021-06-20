@@ -20,7 +20,6 @@ const Employer = () => {
             .then(data => {
                 if (data.length > 0) {
                     setEmployer(true)
-                    alert(data)
                 }
                 else {
                     setEmployer(false)
