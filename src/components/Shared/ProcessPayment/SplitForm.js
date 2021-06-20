@@ -32,7 +32,7 @@ const useOptions = () => {
     return options;
 };
 
-const SplitForm = ({handlePayment}) => {
+const SplitForm = ({ handlePayment }) => {
     const stripe = useStripe();
     const elements = useElements();
     const options = useOptions();
@@ -53,16 +53,16 @@ const SplitForm = ({handlePayment}) => {
             card: elements.getElement(CardNumberElement)
         });
         console.log("[PaymentMethod]", payload);
-        if(payload.error){
+        if (payload.error) {
             setPaymentError(payload.error.message);
             setPaymentSuccess(null);
         }
-        else if(payload.paymentMethod){
+        else if (payload.paymentMethod) {
             setPaymentSuccess(payload.paymentMethod.id);
             handlePayment(payload.paymentMethod.id);
             setPaymentError(null);
         }
-        
+
     };
 
     return (
@@ -70,7 +70,7 @@ const SplitForm = ({handlePayment}) => {
             <form onSubmit={handleSubmit}>
                 <label className="">
                     Card number
-        <CardNumberElement className="form-control cardNumber"
+                    <CardNumberElement className="form-control cardNumber"
                         options={options}
                         onReady={() => {
                             console.log("CardNumberElement [ready]");
@@ -89,7 +89,7 @@ const SplitForm = ({handlePayment}) => {
                 <br />
                 <label>
                     Expiration date
-        <CardExpiryElement className="form-control common me-3"
+                    <CardExpiryElement className="form-control common me-3"
                         options={options}
                         onReady={() => {
                             console.log("CardNumberElement [ready]");
@@ -105,10 +105,10 @@ const SplitForm = ({handlePayment}) => {
                         }}
                     />
                 </label>
-                
+
                 <label>
                     CVC
-        <CardCvcElement className="form-control common"
+                    <CardCvcElement className="form-control common"
                         options={options}
                         onReady={() => {
                             console.log("CardNumberElement [ready]");
