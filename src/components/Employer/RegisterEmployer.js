@@ -55,9 +55,9 @@ const RegisterEmployer = () => {
                         <div className="col-md-6">
                             <label className="">Account Type: </label>
                             <select name="service" className="form-select" onChange={handleService}>
-                                <option>Premium(30 Jobs)</option>
-                                <option >Standard (20 jobs)</option>
-                                <option>Basic(10 Jobs)</option>
+                                <option>Premium</option>
+                                <option >Standard</option>
+                                <option>Basic</option>
                             </select>
                         </div>
                     </div>
