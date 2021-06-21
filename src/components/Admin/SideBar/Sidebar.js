@@ -2,8 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Sidebar.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {  faSignOutAlt, faHome, faGripHorizontal, faUserPlus, faPlus, faTools } from '@fortawesome/free-solid-svg-icons';
+import {  faSignOutAlt, faHome, faGripHorizontal, faUserPlus, faUserTie } from '@fortawesome/free-solid-svg-icons';
 import { UserContext } from '../../../App';
+
 
 
 const Sidebar = () => {
@@ -21,6 +22,11 @@ const Sidebar = () => {
                 <li>
                     <Link to="/admin/addAdmin" className="text-white">
                         <FontAwesomeIcon icon={faUserPlus} /> <span>Make Admin</span>
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/admin/viewSeekers" className="text-white">
+                        <FontAwesomeIcon icon={faUserTie} /> <span>Job Seekers</span>
                     </Link>
                 </li>
                 

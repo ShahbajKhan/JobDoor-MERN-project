@@ -13,9 +13,6 @@ const RegisterEmployer = () => {
     const paymentBy = e => {
         setCard(e.target.value);
     }
-
-    console.log(loggedInUser)
-
     const handleService = e => {
         setServiceType(e.target.value);
     }

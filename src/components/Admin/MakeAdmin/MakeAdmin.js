@@ -1,14 +1,14 @@
 import React from 'react';
 import { useForm } from "react-hook-form";
+import { useHistory } from 'react-router-dom';
 import Sidebar from '../SideBar/Sidebar';
 
 const MakeAdmin = () => {
-
+    let history = useHistory();
     const { register, handleSubmit } = useForm();
     const onSubmit = data => {
         const adminData = {
             email: data.email,
-
         };
         const url = `http://localhost:5000/addAdmin`;
         fetch(url, {
@@ -18,7 +18,11 @@ const MakeAdmin = () => {
             },
             body: JSON.stringify(adminData)
         })
-            .then(res => console.log('server side response', res))
+            .then(res => {
+                if(res){
+                    history.push('/');
+                }
+            })
     };
 
     return (

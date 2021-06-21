@@ -65,6 +65,7 @@ const Navbar = () => {
                         }
 
                         <Link to="/postJob" className="nav-link" style={{ cursor: 'pointer' }} >Post Job</Link>
+                        <Link to="/jobSeeker" className="nav-link" style={{ cursor: 'pointer' }} >Seeker Account</Link>
 
                         {
                             loggedInUser.email ? <button className="btn btn-warning me-2" onClick={signOut}>Log Out</button> : <Link to="/login" className="btn btn-success">Login</Link>
@@ -72,6 +73,7 @@ const Navbar = () => {
                         {
                             name && <button className="btn btn-success">{name}</button>
                         }
+                        
                     </div>
                 </div>
             </div>

@@ -1,14 +1,12 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
-const JobView = (props) => {
-    const {category,type,title,location,deadline,status,salary} = props.job;
 
+const pendingJobsView = (props) => {
+    const {category,type,title,location,deadline,status,salary} = props.job;
     return (
-        <div className="mb-5 col-lg-4 col-sm-6 vehicleCard text-dark">
+        <div className="mb-5 col-lg-4 col-sm-6 vehicleCard">
             <div className="card shadow-lg w-100 h-100 text-center rounded ">
-                <div className="d-flex justify-content-center align-items-center p-2">
-                    <FontAwesomeIcon icon={faBriefcase} style={{height:'50px', width: '50px'}}></FontAwesomeIcon>
+                <div className="d-flex justify-content-center align-items-center h-75 p-2">
+                    <img src="" className="card-img-top h-75 w-75" alt=""/>
                 </div>
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
@@ -28,4 +26,4 @@ const JobView = (props) => {
     );
 };
 
-export default JobView;
+export default pendingJobsView;
