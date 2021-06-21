@@ -16,7 +16,7 @@ const Navbar = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
+
                 if (data) {
                     setIsAdmin(true);
                 }
@@ -25,7 +25,7 @@ const Navbar = () => {
                 }
 
             })
-    },[verifyEmail]);
+    }, [verifyEmail]);
     // Implement Logout
     const signOut = () => {
 
@@ -42,7 +42,7 @@ const Navbar = () => {
             setIsAdmin(false);
             sessionStorage.setItem('token', '');
         }).catch(err => {
-            console.log(err);
+
             console.log(err.message)
         })
     };
@@ -52,14 +52,14 @@ const Navbar = () => {
         <nav className="navbar fixed-top navbar-expand-lg bg-dark navbar-dark">
             <div className="container">
                 <div className="d-flex">
-                    <h1 className="navbar-brand ">JobDoor</h1>
+                    <Link to="/" style={{textDecoration:'none'}}><h1 className="navbar-brand ">JobDoor</h1></Link>
                 </div>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon "></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav ms-auto">
-                        <Link to="/home" className="nav-link" style={{ cursor: 'pointer' }} >Home</Link>
+                        <Link to="/" className="nav-link" style={{ cursor: 'pointer' }} >Home</Link>
                         {
                             isAdmin && <Link to="/admin/addAdmin" className="nav-link" style={{ cursor: 'pointer' }} >Admin</Link>
                         }
@@ -73,7 +73,7 @@ const Navbar = () => {
                         {
                             name && <button className="btn btn-success">{name}</button>
                         }
-                        
+
                     </div>
                 </div>
             </div>

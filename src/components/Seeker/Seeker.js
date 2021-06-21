@@ -1,5 +1,4 @@
 import React, { useContext } from 'react';
-
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
@@ -8,6 +7,7 @@ import Navbar from '../Shared/Navbar/Navbar';
 const Seeker = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const { register, handleSubmit, watch, errors } = useForm();
+
     let history = useHistory();
     // Handle job data
     const onSubmit = data => {
@@ -36,12 +36,12 @@ const Seeker = () => {
                 }
             })
     }
-
     return (
-        <div style={{height:'100vh'}} className="">
+        <div style={{ height: '100vh' }} className="">
             <Navbar />
             <form onSubmit={handleSubmit(onSubmit)} className="mt-5 shadow p-5 container">
-                <div className="row">
+                <div className="row mt-5">
+                    <h1 className="text-center">Job Seeker Account</h1>
                     <div className="col-md-5 mt-2">
                         <label for="JobTitle">Name:</label>
                         <input name="name" className="form-control" ref={register} defaultValue={loggedInUser.displayName} disabled />
@@ -71,7 +71,7 @@ const Seeker = () => {
                         <input name="expectedSalary" type="text" className="form-control" ref={register} placeholder="Salary Range: 100 - 200" required />
                     </div>
                 </div>
-                <input type="submit" className="mt-3 btn btn-success" value="Save" />
+                <input type="submit" className="mt-3 btn btn-success" value="Register" />
             </form>
         </div>
     );

@@ -2,6 +2,7 @@ import { faCcMastercard, faCcPaypal } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
 import Navbar from '../Shared/Navbar/Navbar';
 import ProcessPayment from '../Shared/ProcessPayment/ProcessPayment'
@@ -10,7 +11,7 @@ const RegisterEmployer = () => {
     const { register, handleSubmit, watch, errors } = useForm();
     const [card, setCard] = useState('Credit Card');
     const [serviceType, setServiceType] = useState('Premium');
-
+    let history = useHistory();
     const paymentBy = e => {
         setCard(e.target.value);
     }
@@ -39,6 +40,7 @@ const RegisterEmployer = () => {
             .then(data => {
                 if (data) {
                     alert('Employer added');
+                    history.push('/');
                 }
             })
     }

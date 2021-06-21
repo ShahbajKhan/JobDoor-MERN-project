@@ -31,25 +31,24 @@ const pendingJobsView = (props) => {
                         <h5 className="card-title">{title}</h5>
                         <p className="card-text">{location}</p>
                         <p className="card-text">{type}</p>
-                        <div className="d-flex justify-content-start">
-                            
-                            <select name="status" onChange={handleChange} className=" ms-2 " style={{ backgroundColor: 'orange', borderRadius: '0.60rem' }}>
-                                {
-                                    status === "Pending" && <>
-                                        <option>Pending</option>
-                                        <option>Approved</option>
-                                    </>
-                                }
-                                {
-                                    status === "Approved" && <>
-                                        <option >Approved</option>
-                                        <option>Approved</option>
-                                    </>
-                                }
+
+                        <select name="status" onChange={handleChange} className="btn btn-lg btn-success" >
+                            {
+                                status === "Pending" && <>
+                                    <option>Pending</option>
+                                    <option>Approved</option>
+                                </>
+                            }
+                            {
+                                status === "Approved" && <>
+                                    <option >Approved</option>
+                                    <option>Approved</option>
+                                </>
+                            }
 
 
-                            </select>
-                        </div>
+                        </select>
+
                     </div>
                 </div>
             </div>
