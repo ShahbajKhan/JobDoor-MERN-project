@@ -45,7 +45,7 @@ const RegisterEmployer = () => {
             })
     }
     return (
-        <section>
+        <section className="mt-5">
             <Navbar/>
             <div className="container w-100 mt-5">
                 <h3 className="mt-5">Hello! {loggedInUser.displayName},</h3>
