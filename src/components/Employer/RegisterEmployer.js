@@ -20,7 +20,7 @@ const RegisterEmployer = () => {
     }
 
     const handlePaymentSuccess = paymentId => {
-        const bookDetails = {
+        const employerDetail = {
             user: loggedInUser.displayName,
             email: loggedInUser.email,
             photo: loggedInUser.photo,
@@ -34,7 +34,7 @@ const RegisterEmployer = () => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(bookDetails)
+            body: JSON.stringify(employerDetail)
         })
             .then(res => res.json())
             .then(data => {

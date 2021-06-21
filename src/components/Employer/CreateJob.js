@@ -35,7 +35,7 @@ const CreateJob = (props) => {
             salary: data.salary
         };
 
-        state && fetch('https://fathomless-badlands-44105.herokuapp.com/addNewJob', {
+        state === true && fetch('https://fathomless-badlands-44105.herokuapp.com/addNewJob', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -59,7 +59,6 @@ const CreateJob = (props) => {
     return (
         <div className="">
             <Navbar></Navbar>
-
             <form onSubmit={handleSubmit(onSubmit)} className="shadow my-5 p-5">
                 <h1 className="fw-bolder text-dark text-center">Post a Job</h1>
                 <hr />
