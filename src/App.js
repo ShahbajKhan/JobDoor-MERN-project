@@ -13,6 +13,7 @@ import NoRoute from "./components/NoRoute/NoRoute";
 import MakeAdmin from "./components/Admin/MakeAdmin/MakeAdmin";
 import Seeker from "./components/Seeker/Seeker";
 import JobSeekers from "./components/Admin/JobSeekers/JobSeekers";
+import PendingJobs from "./components/Admin/PendingJobs/PendingJobs";
 
 export const UserContext = createContext();
 function App() {
@@ -38,6 +39,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path="/admin/viewSeekers">
             <JobSeekers />
+          </PrivateRoute>
+          <PrivateRoute path="/admin/pendingJobs">
+            <PendingJobs />
           </PrivateRoute>
           <Route path="*">
             <NoRoute />

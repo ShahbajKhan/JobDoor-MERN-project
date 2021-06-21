@@ -11,7 +11,7 @@ const Navbar = () => {
 
     // Check Admin
     useEffect(() => {
-        fetch(`http://localhost:5000/adminCheck/${verifyEmail}`, {
+        fetch(`https://fathomless-badlands-44105.herokuapp.com/adminCheck/${verifyEmail}`, {
             method: 'GET'
         })
             .then(res => res.json())

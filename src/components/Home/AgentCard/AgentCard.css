@@ -1,0 +1,42 @@
+.agentCard{
+    border: 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.agentCardImg{
+    position: relative;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+}
+.agentCardImg img{
+    width:100%;
+    height: auto;
+}
+.agentCardIcon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000473AB;
+    color: white;
+    font-size: 2rem;
+    transform-origin: bottom;
+    transform: scaleY(0);
+    transition: all 0.4s;
+}
+.agentCardIcon svg:hover{
+    cursor: pointer;
+    transform: scale(0.9);
+    color: #41adb7;
+}
+.agentCardImg:hover{
+    transform: scale(0.95);
+    transition: all 0.3s;
+}
+.agentCardImg:hover .agentCardIcon{
+    transform: scaleY(1);
+    transition: all 0.5s;
+}

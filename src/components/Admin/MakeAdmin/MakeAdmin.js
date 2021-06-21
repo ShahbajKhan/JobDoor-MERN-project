@@ -10,7 +10,7 @@ const MakeAdmin = () => {
         const adminData = {
             email: data.email,
         };
-        const url = `http://localhost:5000/addAdmin`;
+        const url = `https://fathomless-badlands-44105.herokuapp.com/addAdmin`;
         fetch(url, {
             method: 'POST',
             headers: {

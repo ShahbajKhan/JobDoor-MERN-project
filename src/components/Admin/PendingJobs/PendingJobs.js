@@ -1,32 +1,33 @@
 import React, { useEffect, useState } from 'react';
+import Sidebar from '../SideBar/Sidebar';
 import PendingJobsView from './PendingJobsView/PendingJobsView';
 
 const PendingJobs = () => {
     const [jobs, setJobs] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/pendingJobs',
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                }
-            }
-        )
+        fetch('https://fathomless-badlands-44105.herokuapp.com/pendingJobs')
             .then(res => res.json())
             .then(data => {
-                setJobs(data.reverse());
+                setJobs(data);
             })
-    }, []);
+    }, [])
+
 
     return (
-        <section className="container my-5">
-            <h1 className="text-center">Featured Jobs</h1>
-            <div className="row">
-                {
-                    jobs.map(job => <PendingJobsView job={job}></PendingJobsView>)
-                }
+            <div className="row w-100">
+                
+                <div className="col-md-3">
+                    <Sidebar></Sidebar>
+                </div>
+                <div className="col-md-8">
+                    <h1 className="fw-bolder text-center">Pending Jobs</h1>
+                    <div className="row">
+                        {
+                            jobs.map(job => <PendingJobsView job={job}></PendingJobsView>)
+                        }
+                    </div>
+                </div>
             </div>
-        </section>
     );
 };
 

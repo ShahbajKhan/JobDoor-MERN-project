@@ -1,63 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
-import { SearchContext } from '../Home/Home';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import bannerImage from '../../../images/ab-img.png'
 import './TopBanner.css'
 const TopBanner = () => {
-
-    const [searchedJobs, setSearchedJobs] = useContext(SearchContext);
-    const { register, handleSubmit, watch, errors } = useForm();
-    const [otherJob, setOtherJob] = useState([]);
-    const onSubmit = data => {
-        fetch(`http://localhost:5000/searchQuery/${data.category}/${data.title}/${data.location}`)
-            .then(res => res.json())
-            .then(data => {
-                setSearchedJobs(data);
-            })
-    };
-    
     return (
-        <main className="row d-flex align-items-center w-100 mt-3" style={{ height: '100vh' }}>
-            <h1 className="fw-bolder text-center text-">Find Your Dream Job</h1>
-            <form onSubmit={handleSubmit(onSubmit)} className="">
-                <div className="container bg-transparent">
-                    <div className="mt-5" >
-                        <div className="row  text-white ">
-
-                            <div className="col-md-4">
-                                <input name="title" id="jobTitle" className="form-control bg-dark text-white" placeholder="Enter Title" ref={register} />
-                            </div>
-                            <div className="col-md-3">
-
-                                <input name="location" id="jobLocation" className="form-control bg-dark text-white" placeholder="location" ref={register} />
-                            </div>
-
-                            <div className="col-md-3">
-
-                                <select ref={register} name="category" className="form-select bg-dark text-white" >
-                                    <option value="IT Engineer">IT / Engineering</option>
-                                    <option value="Education">Education</option>
-                                    <option value="Agriculture">Agriculture</option>
-                                    <option value="Business">Business</option>
-                                    <option value="Writing">Writing</option>
-                                    <option value="Telecommunications">Telecommunications</option>
-                                    <option value="Design & Art">Design and Art</option>
-                                </select>
-                            </div>
-                            <div className="col-md-2 ">
-                                <input type="submit" className="btn btn-lg btn-success form-control" value="Search" />
-                            </div>
-                        </div>
-
-                    </div>
-
-
-
-
-                </div>
-
-
-            </form>
+        <main style={{ height: '600px' }} className="row d-flex align-items-center w-100">
+            <div className="col-sm-12 col-lg-4 offset-md-1 mb-4 fw-bolder">
+                <p>Job Fair!</p>
+                <h1>Find <span style={{ color: '#ff4d30' }}>Your</span> Dream <br /> job</h1>
+                <p className='text-secondary'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Adipisci perferendis fuga officia dicta, voluptatem provident!</p>
+                <Link to="/postJob" style={{ backgroundImage: 'linear-gradient(to left,#f0561d,#fff,#ff6830,#f0561d)' }} className="btn btn-lg fw-bolder">Post Job</Link>
+            </div>
+            <div className="col-md-12 col-lg-6">
+                <img src={bannerImage} alt="" className="img-fluid w-75" />
+            </div>
         </main>
     );
 };

@@ -1,0 +1,14 @@
+.footerMain{
+    background-color: #fd592d;
+    color: white !important;
+}
+.footerLink h4{
+    margin-bottom: 15px;
+}
+.footerLink h6{
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+.lastText{
+    background-color: #FF4311;
+}

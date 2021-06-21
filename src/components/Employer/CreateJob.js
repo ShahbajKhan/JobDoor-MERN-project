@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../App';
+import Navbar from '../Shared/Navbar/Navbar';
 
 const CreateJob = () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -11,6 +12,7 @@ const CreateJob = () => {
     // Handle job data
     const onSubmit = data => {
         const jobDetail = {
+            employer: loggedInUser.email,
             category: data.category,
             type: data.type,
             title: data.title,
@@ -20,7 +22,7 @@ const CreateJob = () => {
             salary: data.salary
         };
         
-        fetch('http://localhost:5000/addNewJob', {
+        fetch('https://fathomless-badlands-44105.herokuapp.com/addNewJob', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,12 +38,16 @@ const CreateJob = () => {
             })
     }
     return (
-        <div>
-            <form onSubmit={handleSubmit(onSubmit)} className="bg-light p-5">
-                <div className="row d-flex">
-                    <div className="col-md-12">
+        <div className="">
+            <Navbar></Navbar>
+            
+            <form onSubmit={handleSubmit(onSubmit)} className="shadow my-5 p-5">
+            <h1 className="fw-bolder text-dark text-center">Post a Job</h1>
+            <hr />
+                <div className="row d-flex fw-bolder">
+                    <div className="col-md-6">
                         <label className="">Please Select a Job Category: </label>
-                        <select ref={register} name="category" >
+                        <select ref={register} name="category" className="form-select">
                             <option value="IT Engineer">IT / Engineering</option>
                             <option value="Education">Education</option>
                             <option value="Agriculture">Agriculture</option>
@@ -51,32 +57,32 @@ const CreateJob = () => {
                             <option value="Design & Art">Design and Art</option>
                         </select>
                     </div>
-                    <div className="col-md-5 mt-2">
+                    <div className="col-md-6 mt-2">
                         <label for="JobTitle">Job Title</label>
                         <input name="title" className="form-control" ref={register} placeholder="Enter title" required/>
                     </div>
-                    <div className="col-md-5 mt-2">
+                    <div className="col-md-6 mt-2">
                         <label for="JobLocation">Job Location</label>
                         <input name="location" className="form-control" ref={register} placeholder="Enter location" required/>
                     </div>
-                    <div className="col-md-5 mt-2">
+                    <div className="col-md-6 mt-2">
                         <label for="JobType">Job Type</label>
                         <input name="type" className="form-control " ref={register} placeholder="Job type" required/>
                     </div>
-                    <div className="col-md-5 mt-2">
+                    <div className="col-md-6 mt-2">
                         <label for="Deadline">Deadline:</label>
                         <input name="deadline" type="date" className="form-control" ref={register} placeholder="Application Deadline" required/>
                     </div>
-                    <div className="col-md-5 mt-2">
+                    <div className="col-md-6 mt-2">
                         <label for="Salary">Salary($):</label>
                         <input name="salary" type="text" className="form-control" ref={register} placeholder="Salary Range: 100 - 200" required/>
                     </div>
-                    <div className="col-md-5 mt-2">
+                    <div className="col-md-6 mt-2">
                         <label for="Salary">Job Description:</label>
                         <input name="description" type="text" className="form-control" ref={register} placeholder="Enter Job Description" required/>
                     </div>
                 </div>
-                <input type="submit" className="mt-3 btn btn-lg btn-success" value="Post" />
+                <input type="submit" className="mt-3 btn btn-lg btn-danger" value="Post" />
             </form>
         </div>
     );

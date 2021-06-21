@@ -8,7 +8,7 @@ const JobSeekers = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     // Retrieve bookings using mail address
     useEffect(() => {
-        fetch('http://localhost:5000/viewSeekers', {
+        fetch('https://fathomless-badlands-44105.herokuapp.com/viewSeekers', {
             method: "GET",
             headers: {
                 'Content-type': 'application/json',

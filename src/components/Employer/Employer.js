@@ -8,7 +8,7 @@ const Employer = () => {
     const [employer, setEmployer] = useState();
 
     useEffect(() => {
-        fetch('http://localhost:5000/userIsEmployer?email=' + loggedInUser?.email,
+        fetch('https://fathomless-badlands-44105.herokuapp.com/userIsEmployer?email=' + loggedInUser?.email,
             {
                 method: 'GET',
                 headers: {

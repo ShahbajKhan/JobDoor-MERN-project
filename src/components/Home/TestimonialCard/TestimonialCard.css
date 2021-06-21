@@ -1,0 +1,13 @@
+.sliderCard{
+    border: 0;
+    border-radius: 10px;
+    padding: 1.5rem;
+}
+.sliderCard img{
+    width: 100%;
+    border: 0;
+    border-radius: 50%;
+}
+.sliderCard p{
+    margin-bottom: 1.5rem;
+}
